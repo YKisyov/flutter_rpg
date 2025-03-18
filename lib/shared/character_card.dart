@@ -5,9 +5,7 @@ import 'package:flutter_rpg/theme.dart';
 import '../models/character.dart';
 
 class CharacterCard extends StatelessWidget {
-  const CharacterCard(this.character, {
-    super.key,
-    required this.onDelete});
+  const CharacterCard(this.character, {super.key, required this.onDelete});
 
   final Character character;
   final VoidCallback onDelete;
@@ -20,54 +18,59 @@ class CharacterCard extends StatelessWidget {
         child: Row(
           //mainAxisAlignment: MainAxisAlignment.center,
           children: [
-              
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.white.withValues(alpha: 1), // Shadow color
-                      blurRadius: 3, // How soft the shadow is, the smaller the number the better
-                      spreadRadius: 3, // How big the shadow area is
-                      offset: Offset(0, 0), // Shadow position
-                    ),
-                  ],
-                  border: Border.all(color: Colors.black,
-                    width: 2)
-                ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.white, width: 2),
+                  ),
 
-                child:
-                  ClipRRect(
+                  child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Image.asset(
                       character.vocation.image,
-
 
                       fit: BoxFit.fill,
                       width: 100,
                       height: 100,
                     ),
                   ),
-              ),
-            SizedBox(width: 16,),
-            Expanded(child:
-              MyStyledTitle(
-                  character.name),
+                ),
+
+                SizedBox(
+                  width: 100,
+                  child: MyStyledTitle(
+                      character.name,
+                      textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
             ),
-            IconButton( //Delete Button
+
+            SizedBox(width: 16),
+            Expanded(
+              child: SizedBox(),
+            ),
+            IconButton(
+              //Delete Button
               onPressed: () {
                 onDelete();
                 print("Element deleted");
               },
-              icon: Icon(Icons.delete, size: 28,),
-              color: AppColors.textColor,),
+              icon: Icon(Icons.delete, size: 28),
+              color: AppColors.textColor,
+            ),
 
-            IconButton( // Arrow Button
-                onPressed: () {
-                  print("Arrow icon was pressed.");
+            IconButton(
+              // Arrow Button
+              onPressed: () {
+                print("Arrow icon was pressed.");
               },
-                icon: Icon(Icons.forward),
-            color: AppColors.textColor,),
+              icon: Icon(Icons.forward),
+              color: AppColors.textColor,
+            ),
           ],
         ),
       ),

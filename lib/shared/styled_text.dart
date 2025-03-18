@@ -33,13 +33,18 @@ class MyStyledHeadline extends StatelessWidget {
 }
 
 class MyStyledTitle extends StatelessWidget {
-  const MyStyledTitle(this.text, {super.key});
+  const MyStyledTitle(this.text,
+      {super.key,
+        this.textAlign = TextAlign.left,
+      });
 
+  final TextAlign textAlign;
   final String text;
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: textAlign,
       style: GoogleFonts.shantellSans(
         textStyle: Theme.of(context).textTheme.titleMedium,
       ),
