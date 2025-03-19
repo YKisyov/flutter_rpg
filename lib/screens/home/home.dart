@@ -4,8 +4,8 @@ import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'dart:math';
 
-import '../models/character.dart';
-import '../models/vocation.dart';
+import '../../models/character.dart';
+import '../../models/vocation.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
