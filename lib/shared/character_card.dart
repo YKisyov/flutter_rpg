@@ -16,63 +16,66 @@ class CharacterCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: Row(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.white, width: 2),
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: Colors.white, width: 2),
+                ),
+
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.asset(
+                    character.vocation.image,
+                    fit: BoxFit.fill,
+                    width: 100,
+                    height: 100,
                   ),
+                ),
+              ),
+              SizedBox(width: 16,),
 
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      character.vocation.image,
 
-                      fit: BoxFit.fill,
-                      width: 100,
-                      height: 100,
+              Column(
+                children: [
+                  SizedBox(
+                    width: 120,
+                    child: MyStyledHeadline(
+                      character.name,
                     ),
                   ),
-                ),
-
-                SizedBox(
-                  width: 100,
-                  child: MyStyledTitle(
-                      character.name,
-                      textAlign: TextAlign.center,
+                  SizedBox(
+                    width: 120,
+                    child: MyStyledBody(
+                      character.vocation.title,
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+              SizedBox(width: 16),
+              Expanded(child: SizedBox()),
 
-            SizedBox(width: 16),
-            Expanded(
-              child: SizedBox(),
-            ),
-            IconButton(
-              //Delete Button
-              onPressed: () {
-                onDelete();
-                print("Element deleted");
-              },
-              icon: Icon(Icons.delete, size: 28),
-              color: AppColors.textColor,
-            ),
-
-            IconButton(
-              // Arrow Button
-              onPressed: () {
-                print("Arrow icon was pressed.");
-              },
-              icon: Icon(Icons.forward),
-              color: AppColors.textColor,
-            ),
-          ],
-        ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      onDelete();
+                      print("Element deleted");
+                    },
+                    icon: Icon(Icons.delete, size: 28),
+                    color: AppColors.textColor,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      print("Arrow icon was pressed.");
+                    },
+                    icon: Icon(Icons.forward),
+                    color: AppColors.textColor,
+                  ),
+                ],
+              ),
+            ],),
       ),
     );
   }

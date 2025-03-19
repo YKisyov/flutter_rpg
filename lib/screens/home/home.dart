@@ -19,17 +19,17 @@ class _HomeState extends State<Home> {
 // Dummy data to try out the new model:
   List<Character?> dummyCharacterList = [
     Character(
-        id: "1", name: "Shaun Pelling", slogan: "Kapumf!", vocation: Vocation.wizard),
+        id: "1", name: "Shaun", slogan: "Kapumf!", vocation: Vocation.wizard),
     Character(id: "2",
-        name: "RoberrRRRRRrrrtoooozzzzzzzzzzzzzzzzzzzzzzzzyyyyyyyyyy",
+        name: "Roberto",
         slogan: "Lift me up...",
         vocation: Vocation.junkie),
     Character(id: "3",
-        name: "Lady GaGa Abra Cadabrrrrrrrr R rrrrrrraaaaA",
+        name: "Alexander",
         slogan: "Fire in the hole!",
         vocation: Vocation.raider),
     Character(id: "4",
-        name: "DanCho",
+        name: "Dan Cho",
         slogan: "Alright then gang.",
         vocation: Vocation.ninja),
   ];
