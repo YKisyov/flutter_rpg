@@ -60,4 +60,12 @@ ThemeData myPrimaryTheme = ThemeData(
     //     borderRadius: BorderRadius.circular(16)),
     margin: const EdgeInsets.only(bottom: 10),
   ),
+
+  //Input decoration theme
+  inputDecorationTheme: InputDecorationTheme(
+
+    fillColor: AppColors.secondaryColor.withValues(alpha: 0.5),
+    labelStyle: TextStyle(color: AppColors.textColor),
+    prefixIconColor: AppColors.textColor,
+  )
 );

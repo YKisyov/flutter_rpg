@@ -3,15 +3,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyStyledBody extends StatelessWidget {
   const MyStyledBody(this.text, {super.key,
-  this.italicStyle = false,});
+  this.fontStyle = FontStyle.normal,});
 
-  final bool italicStyle;
+  final FontStyle fontStyle;
   final String text;
   @override
   Widget build(BuildContext context) {
     return Text(text,
         style: GoogleFonts.shantellSans(
-          fontStyle: italicStyle ? FontStyle.italic : FontStyle.normal,
+          fontStyle: fontStyle,
           textStyle: Theme.of(context).textTheme.bodyMedium,
         ));
   }
