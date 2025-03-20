@@ -52,7 +52,6 @@ ThemeData myPrimaryTheme = ThemeData(
 
   //Card theme
   cardTheme: CardTheme(
-
     color: AppColors.secondaryColor.withValues(alpha: 0.82),
     elevation: 7,
     surfaceTintColor: Colors.transparent,
@@ -63,9 +62,14 @@ ThemeData myPrimaryTheme = ThemeData(
 
   //Input decoration theme
   inputDecorationTheme: InputDecorationTheme(
-
     fillColor: AppColors.secondaryColor.withValues(alpha: 0.5),
     labelStyle: TextStyle(color: AppColors.textColor),
     prefixIconColor: AppColors.textColor,
-  )
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: AppColors.textColor,
+        style: BorderStyle.solid,
+      )
+    )
+  ),
 );
