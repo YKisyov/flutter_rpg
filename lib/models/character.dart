@@ -10,7 +10,7 @@ class Character with Stats {
     required this.vocation,
   });
 
-  final String id;
+  final String id;  //TODO change type UUID ver. 4!
   final String name;
   final String slogan;
   final Vocation vocation;
