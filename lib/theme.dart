@@ -70,6 +70,16 @@ ThemeData myPrimaryTheme = ThemeData(
         color: AppColors.textColor,
         style: BorderStyle.solid,
       )
-    )
+    ),
   ),
+
+  dialogTheme: DialogTheme(
+    backgroundColor: AppColors.secondaryColor,
+    surfaceTintColor: Colors.transparent,
+    alignment: Alignment.center,
+    actionsPadding: EdgeInsets.all(10),
+    insetPadding: EdgeInsets.all(1),
+  ),
+
+
 );

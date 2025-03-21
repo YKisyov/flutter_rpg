@@ -31,7 +31,6 @@ class _CreateNewCharacterState extends State<CreateNewCharacter> {
       showDialog(context: context, builder: (ctx){
         return AlertDialog(
           actionsAlignment: MainAxisAlignment.center,
-          backgroundColor: AppColors.secondaryColor,
           title: MyStyledTitle("Липсвa име на герой",
             textAlign: TextAlign.center,),
           content: const MyStyledBody(
@@ -52,7 +51,6 @@ class _CreateNewCharacterState extends State<CreateNewCharacter> {
       showDialog(context: context, builder: (ctx){
         return AlertDialog(
           actionsAlignment: MainAxisAlignment.center,
-          backgroundColor: AppColors.secondaryColor,
           title: MyStyledTitle("Липсва слоган",
             textAlign: TextAlign.center,),
           content: const MyStyledBody(
