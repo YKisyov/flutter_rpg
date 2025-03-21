@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/screens/create/create_new_character.dart';
 import 'package:flutter_rpg/shared/character_card.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
@@ -16,10 +17,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-// Dummy data to try out the new model:
-
-
   final Random random = Random();
+
+
 
   _nullCurrentCharter(int index) {
     setState(() {
@@ -65,16 +65,15 @@ class _HomeState extends State<Home> {
             ),
             MyStyledButton(
               onPressed: () {
-                setState(() {
-                  dummyCharacterList.add(
-                      Character(id: dummyCharacterList.length.toString(),
-                        name: "Name_${dummyCharacterList.length.toString()}",
-                        slogan: "Cheap Words",
-                        vocation: Vocation.values[random.nextInt(
-                            Vocation.values.length)],
-                      )
-                  );
-                  });
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (ctx)  {
+                        return CreateNewCharacter();
+                      },
+                    ));
+
+              //    addRandomCharacterAndUpdateState(random);
               },
               child: MyStyledHeadline("Добави герой"),
             ),
@@ -84,8 +83,25 @@ class _HomeState extends State<Home> {
     );
   }
 
+  //Part of the old test-play-around design. Marked for removal.
+  void addRandomCharacterAndUpdateState(Random random){
+    setState(() {
+      dummyCharacterList.add(
+          Character(id: dummyCharacterList.length.toString(),
+            name: "Name_${dummyCharacterList.length.toString()}",
+            slogan: "Cheap Words",
+            vocation: Vocation.values[random.nextInt(
+                Vocation.values.length)],
+          )
+      );
+    });
+  }
+
+
 }
 
+
+// Dummy data to try out the new model:
 List<Character?> dummyCharacterList = [
   Character(
       id: "1", name: "Shaun", slogan: "Kapumf!", vocation: Vocation.wizard),

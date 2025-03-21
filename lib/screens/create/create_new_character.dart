@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/models/vocation.dart';
 import 'package:flutter_rpg/screens/create/vocation_card.dart';
+import 'package:flutter_rpg/screens/home/home.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,30 +25,72 @@ class _CreateNewCharacterState extends State<CreateNewCharacter> {
   final TextEditingController _sloganTextEditingController = TextEditingController();
   Vocation selectedVocation = Vocation.values[0];
 
-  void _handleTextSubmit(){
-    if (_characterNameTextEditingController.text.isEmpty){
-      //TODO add pop-up warning to address the issue.
-      return;
-    }
-    if (_sloganTextEditingController.text.isEmpty){
-      //TODO add pop-up warning to address the issue.
-      return;
-    }
-    //TODO Process the data submission.
+  void _handleTextSubmit() {
+    if (_characterNameTextEditingController.text.trim().isEmpty) {
 
-    Character attemptToCreateNewChar = Character(
+      showDialog(context: context, builder: (ctx){
+        return AlertDialog(
+          actionsAlignment: MainAxisAlignment.center,
+          backgroundColor: AppColors.secondaryColor,
+          title: MyStyledTitle("Липсвa име на герой",
+            textAlign: TextAlign.center,),
+          content: const MyStyledBody(
+              "Всеки свестен герой си има име. Кажи ми какво е твоето?"),
+          actions: [
+            MyStyledButton(
+                onPressed: () {
+                  Navigator.pop(ctx);
+                },
+                child: const MyStyledHeadline("close")
+            )
+          ],
+        );
+      });
+      return;
+    }
+    if (_sloganTextEditingController.text.trim().isEmpty) {
+      showDialog(context: context, builder: (ctx){
+        return AlertDialog(
+          actionsAlignment: MainAxisAlignment.center,
+          backgroundColor: AppColors.secondaryColor,
+          title: MyStyledTitle("Липсва слоган",
+            textAlign: TextAlign.center,),
+          content: const MyStyledBody(
+              "Every good RPG character has a slogan. Add one to yours."),
+          actions: [
+            MyStyledButton(
+                onPressed: () {
+                  Navigator.pop(ctx);
+                },
+                child: const MyStyledHeadline("close")
+            )
+          ],
+        );
+      });
+      return;
+      return;
+    }
+
+    dummyCharacterList.add(Character(
         id: _uuid.v4(),
         name: _characterNameTextEditingController.text.trim(),
         slogan: _sloganTextEditingController.text.trim(),
-        vocation: selectedVocation);
+        vocation: selectedVocation)
+    );
+    Navigator.push(context,
+        MaterialPageRoute(
+            builder: (ctx) {
+              return Home();
+            }
+        ));
   }
 
-  void handleVocationSelection(Vocation vocation){
+  void handleVocationSelection(Vocation vocation) {
     setState(() {
-
       selectedVocation = vocation;
     });
   }
+
   @override
   void dispose() {
     _characterNameTextEditingController.dispose();
@@ -83,24 +126,24 @@ class _CreateNewCharacterState extends State<CreateNewCharacter> {
                 cursorColor: AppColors.textColor,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.person_2,
-                      color: AppColors.textColor,),
+                    color: AppColors.textColor,),
                   label: const MyStyledBody(
                     "Въведете име на героя си",),
                 ),
-                controller:  _characterNameTextEditingController,
+                controller: _characterNameTextEditingController,
               ),
               SizedBox(height: 10),
               TextField(
                 style: GoogleFonts.shantellSans(
-                    color: AppColors.textColor,
-                    fontStyle: FontStyle.italic,
+                  color: AppColors.textColor,
+                  fontStyle: FontStyle.italic,
                 ),
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.chat_rounded,
-                    color: AppColors.textColor,),
-                  label: const MyStyledBody(
-                    "Изберете слоган",
-                    fontStyle: FontStyle.italic,)
+                    prefixIcon: Icon(Icons.chat_rounded,
+                      color: AppColors.textColor,),
+                    label: const MyStyledBody(
+                      "Изберете слоган",
+                      fontStyle: FontStyle.italic,)
                 ),
                 controller: _sloganTextEditingController,
               ),
@@ -116,7 +159,8 @@ class _CreateNewCharacterState extends State<CreateNewCharacter> {
                   itemBuilder: (_, index) {
                     return VocationCard(
                       vocation: Vocation.values[index],
-                      isThisCardSelected: selectedVocation == Vocation.values[index],
+                      isThisCardSelected: selectedVocation ==
+                          Vocation.values[index],
                       selectVocationFunc: handleVocationSelection,
                     );
                   },

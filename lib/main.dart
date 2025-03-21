@@ -6,6 +6,6 @@ import 'package:flutter_rpg/theme.dart';
 void main() {
   runApp(MaterialApp(
     theme: myPrimaryTheme,
-    home: const CreateNewCharacter(),
+    home: const Home(),
   ));
 }
