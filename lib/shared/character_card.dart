@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/screens/profile/character_profile.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
 
@@ -68,6 +69,13 @@ class CharacterCard extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (ctx) => CharacterProfile(
+                                  character: character ),
+                          )
+                      );
                       print("Arrow icon was pressed.");
                     },
                     icon: Icon(Icons.forward),
